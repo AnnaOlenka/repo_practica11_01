@@ -1,0 +1,15 @@
+venv/
+db.sqlite3
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.log
+server.log
+server_err.log
+poblar_datos.py
+node_modules/
+package.json
+package-lock.json
+*.docx
+*.js

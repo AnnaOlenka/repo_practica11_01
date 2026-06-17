@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TechStore{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --color-bg: #f9fafb;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-text: #111827;
+            --color-text-muted: #6b7280;
+            --color-accent: #2563eb;
+            --color-accent-light: #eff6ff;
+            --font: 'Segoe UI', system-ui, sans-serif;
+            --radius: 8px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .nav-brand i { font-size: 1.4rem; }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--color-accent); }
+
+        /* Main */
+        main { flex: 1; padding: 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+        }
+
+        {% block extra_styles %}{% endblock %}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'catalogo:home' %}" class="nav-brand">
+        <i class="ti ti-device-laptop" aria-hidden="true"></i>
+        TechStore
+    </a>
+    <ul class="nav-links">
+        <li>
+            <a href="{% url 'catalogo:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
+                <i class="ti ti-home" aria-hidden="true"></i> Inicio
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'catalogo:catalogo' %}" {% if request.resolver_match.url_name == 'catalogo' %}class="active"{% endif %}>
+                <i class="ti ti-layout-grid" aria-hidden="true"></i> Catálogo
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'catalogo:agregar_producto' %}" {% if request.resolver_match.url_name == 'agregar_producto' %}class="active"{% endif %}>
+                <i class="ti ti-circle-plus" aria-hidden="true"></i> Agregar
+            </a>
+        </li>
+        <li>
+            <a href="/admin/">
+                <i class="ti ti-settings" aria-hidden="true"></i> Admin
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>TechStore &copy; {% now "Y" %} &mdash; Desarrollado con Django 5.x</p>
+</footer>
+
+</body>
+</html>
