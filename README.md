@@ -1,5 +1,6 @@
-## Instrucciones
 
+
+## Instrucciones de Instalación
 1. **Habilitar el entorno virtual:**
 
 ```bash
@@ -25,6 +26,18 @@
     pip install -r requirements.txt
 ```
 
+## Instrucciones de Ejecución
+1. Ejecutamos las migraciones
+
+```bash
+    python manage.py makemigrations catalogo
+    python manage.py migrate
+```
+
+2. Ejecutar el proyecto
+```bash
+    python manage.py runserver
+```
 
 ## Integrantes
 - Alarcón Mendoza Estiven Rodrigo
