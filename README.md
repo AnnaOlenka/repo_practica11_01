@@ -75,15 +75,7 @@ Este QuerySet se usa en `ProductoListView.get_queryset()`. Primero arma una cons
 
 Los QuerySets en Django usan **lazy evaluation**: construir un QuerySet no ejecuta inmediatamente una consulta SQL. Django espera hasta que realmente necesita los datos, por ejemplo al iterar los productos en el template, convertirlos a lista, llamar a `.count()`, evaluar su longitud o acceder a sus resultados. Esto permite encadenar filtros como `.filter().order_by().filter()` antes de tocar la base de datos.
 
-## Capturas
-
-### `/catalogo/` renderizado
-
-![Captura de la página /catalogo/ renderizada](docs/capturas/catalogo-renderizado.png)
-
 ### Estructura de carpetas
-
-![Captura de la estructura de carpetas](docs/capturas/estructura-carpetas.png)
 
 Estructura principal del proyecto:
 
