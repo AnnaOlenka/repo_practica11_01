@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # --- Ruta - Admin ---
     path('admin/', admin.site.urls),
+
+    # --- Ruta - Catálogo ---
     path('', include('catalogo.urls')),
 ]
